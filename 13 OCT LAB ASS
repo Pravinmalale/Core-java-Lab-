@@ -1,4 +1,44 @@
-Q.2
+
+//////////////////Q1////////////
+import java.util.Scanner;
+public class rollno
+{
+	public static void main(String args[])
+	{
+		Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		System.out.println(" Enter the roll no ");
+		
+		int  z=1%4;
+		System.out.println("Z ="+z);
+		if(x%4==1)
+		{
+		System.out.println("sapphire");
+		}
+		else if(x%4==2)
+		{
+		System.out.println("pearl");
+		}
+		
+	else if(x%4==3)
+		{
+		System.out.println("Ruby");
+	
+		}
+			else if(x%4==0)
+		{
+		System.out.println("emerald");
+	
+		}
+		
+		 
+	}
+}
+
+
+////////////////////////////Q2/////////////////
+
+
 import java.util.Scanner;
 public class pattern
 {
@@ -26,3 +66,5 @@ public class pattern
 		 
 	}
 }
+
+////////////////////////////Q3 ///////////////////

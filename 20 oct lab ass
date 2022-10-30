@@ -1,1 +1,97 @@
-# Core-java-Lab-
+/*
+  Q1.	Find transpose of matrix{{1,2},{4,5},{8,9}} and multiplication of all members in matrix.
+*/
+
+import java.util.Scanner;  
+	public class Transpose  
+	{  
+	    public static void main(String args[])    
+	    {  
+	    int i, j;  
+	    System.out.println("Enter total rows and columns: ");  
+	    Scanner s = new Scanner(System.in);  
+	    int row = s.nextInt();  
+	    int column = s.nextInt();  
+	    int array[][] = new int[row][column];  
+	    System.out.println("Enter matrix:");  
+	    for(i = 0; i < row; i++)  
+	    {  
+	        for(j = 0; j < column; j++)   
+	            {  
+	            array[i][j] = s.nextInt();  
+	            System.out.print(" ");  
+	            }  
+	    }  
+	    System.out.println("The above matrix before Transpose is ");  
+	    for(i = 0; i < row; i++)  
+	        {  
+	            for(j = 0; j < column; j++)  
+	            {  
+	            System.out.print(array[i][j]+" ");  
+	            }  
+	            System.out.println(" ");  
+	        }  
+	    System.out.println("The above matrix after Transpose is ");  
+	    for(i = 0; i < column; i++)  
+	        {  
+	            for(j = 0; j < row; j++)  
+	            {  
+	                System.out.print(array[j][i]+" ");  
+	            }  
+	            System.out.println(" ");  
+	        }  
+	    }  
+	}
+****************************************************************************************
+
+/*
+  Q 2.	Find HCF of two number, the numbers are 60,36
+*/
+
+import java.util.Scanner;
+public class HCF {
+	   public static void main(String args[]){
+	      int a, b, i, hcf = 0;
+	      Scanner sc = new Scanner(System.in);
+	      System.out.println("Enter first number :: ");
+	      a = sc.nextInt();
+	      System.out.println("Enter second number :: ");
+	      b = sc.nextInt();
+
+	      for(i = 1; i <= a || i <= b; i++) {
+	         if( a%i == 0 && b%i == 0 )
+	         hcf = i;
+	      }
+	      System.out.println("HCF of given two numbers is ::"+hcf);
+	   }
+	}
+************************************************************************************
+/*
+  Q3.	Arrange String in length wise ascending order .ex.  this is   easiest example is,this,easiest,example
+*/
+
+import java.util.*; 
+public class ASSENDING { 
+  public static void main(String[] args) { 
+  Scanner sc=new Scanner(System.in); 
+  System.out.println("Enter String:"); 
+  String str=sc.nextLine(); 
+  String[] str1=str.split("s"); 
+  for(int i=0;i<str1.length;i++) 
+  { 
+  for(int j=i+1;j<str1.length;j++) 
+  { 
+  if(str1[i].length()>str1[j].length()) 
+  { 
+  String temp= str1[i]; 
+  str1[i]=str1[j]; 
+  str1[j]=temp; 
+  } 
+  } 
+   } 
+  for(int i=0;i<str1.length;i++) 
+  { 
+  System.out.println(str1[i]+" ");  
+  } 
+  } 
+}

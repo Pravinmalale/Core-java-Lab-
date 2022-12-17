@@ -1,0 +1,199 @@
+# Core-java-Lab-
+
+
+
+******************************************************Employe ************************
+
+package com.pra;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+//using Annotations
+@Entity
+@Table(name="Employe_details")
+
+public class Employe {
+	//for primary key
+		@Id
+	  private int eid;//decalre private data member
+	  private String ename;
+	  private String edept;
+	  private int esalary;
+	  private Address address;
+	  
+	  //getter and setter method
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	//default constructor
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	//constructor usinf fields
+	public Employee(int eid, String ename, String edept, int esalary) {
+		super();
+		this.eid = eid;
+		this.ename = ename;
+		this.edept = edept;
+		this.esalary = esalary;
+	}
+	//getter and setter
+	public int getEid() {
+		return eid;
+	}
+	public void setEid(int eid) {
+		this.eid = eid;
+	}
+	public String getEname() {
+		return ename;
+	}
+	public void setEname(String ename) {
+		this.ename = ename;
+	}
+	public String getEdept() {
+		return edept;
+	}
+	public void setEdept(String edept) {
+		this.edept = edept;
+	}
+	public int getEsalary() {
+		return esalary;
+	}
+	public void setEsalary(int esalary) {
+		this.esalary = esalary;
+	}
+
+}
+**********************************************add ***********
+package com.pra;
+
+
+import javax.persistence.Embeddable;
+
+public class Address {
+public Address() {
+		
+	}
+	private String hname;
+	private String area;
+	private String city;
+	private int pincode;
+	public String getHname() {
+		return hname;
+	}
+	public void setHname(String hname) {
+		this.hname = hname;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public int getPincode() {
+		return pincode;
+	}
+	public void setPincode(int pincode) {
+		this.pincode = pincode;
+	}
+
+
+}
+********************************************ap
+package com.pra;
+import java.util.Scanner;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+	//declare addemp method
+		public static String addemp(Session ss,Transaction t)
+		{
+			//object creation
+			Employee emp=new Employee();
+			//scanner class for user input
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Enter the Employee Id :");
+			int eid=sc.nextInt();
+			emp.setEid(eid);
+			
+			Scanner sc1 = new Scanner(System.in);
+			System.out.println("Enter the Employee Name :");
+			String ename=sc1.nextLine();
+			emp.setEname(ename);
+			
+			Scanner sc2 = new Scanner(System.in);
+			System.out.println("Enter the Employee Deparment :");
+			String edept=sc2.nextLine();
+			emp.setEdept(edept);
+			
+			Scanner sc3 = new Scanner(System.in);
+			System.out.println("Enter the Employee Salary :");
+			int esalary=sc3.nextInt();
+			emp.setEsalary(esalary);
+			
+			Address ad=new Address();
+			Scanner sc4=new Scanner(System.in);
+			System.out.println("Enter the Employee Home Name :");
+			String hname=sc2.nextLine();
+			ad.setHname(hname);
+			
+			Scanner sc5=new Scanner(System.in);
+			System.out.println("Enter the Employee Area :");
+			String area=sc2.nextLine();
+			ad.setArea(area);
+			
+			Scanner sc6=new Scanner(System.in);
+			System.out.println("Enter the Employee City :");
+			String city=sc6.nextLine();
+			ad.setCity(city);
+			
+			Scanner sc7=new Scanner(System.in);
+			System.out.println("Enter the Employee Pincode :");
+			int pincode=sc7.nextInt();
+			ad.setPincode(pincode);
+			//ss.save(ad);
+			emp.setAddress(ad);//set address in emp
+			ss.save(emp);
+	        
+			return "Employee is Added";
+			
+		}
+	    public static void main( String[] args )
+	    {
+	        System.out.println( "Project Started" );
+	        Configuration cfg=new Configuration().configure().addAnnotatedClass(Employee.class);
+	        SessionFactory sf=cfg.buildSessionFactory();
+	        Session ss=sf.openSession();
+	     //   Session s1=sf.getCurrentSession();
+	        Transaction t=ss.beginTransaction();
+	      //  Employee emp=new Employee();
+	        System.out.println(addemp(ss,t));//calling method
+	        t.commit();
+	        
+	        
+	        
+	    }
+}
+***********************************

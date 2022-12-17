@@ -1,0 +1,130 @@
+# Core-java-Lab-
+package Asg6 ;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+public class Main {
+       public static void main(String[] args) {
+		// TODO Auto-generated method stub
+List<Agent>data=new ArrayList<>();//create arraylist
+data.add(new Agent("pravin",102,"pune"));
+data.add(new Agent("saurabh",101,"Pune"));
+data.add(new Agent("nikhil",103,"Mumbai"));
+data.add(new Agent("sachin ",107,"Punjab"));
+data.add(new Agent("karan ",106,"Delhi"));
+Collections.sort(data);//for sorting
+for(Agent a:data)//used for loop
+{
+ System.out.println("Agent Name:-"+a.getName()+" ID:-"+a.getId()+" Area:-"+a.getArea());//printing data
+}
+}
+}
+class Agent implements Comparable<Agent>
+{
+	//declare private data member
+  private String name;
+  private int id;
+  private String area;
+  //getter and setter method
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getArea() {
+	return area;
+}
+public void setArea(String area) {
+	this.area = area;
+}
+//constructor with fields
+public Agent(String name, int id, String area) {
+	super();
+	this.name = name;
+	this.id = id;
+	this.area = area;
+}
+//compareTo method
+@Override
+public int compareTo(Agent o) {
+	// TODO Auto-generated method stub
+	return area.compareToIgnoreCase(o.area);
+} 
+}
+*********************************************************************
+
+package Asg6;
+
+import java.util.HashMap;
+
+public class HashMap_square {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+HashMap<Integer,Integer>data=new HashMap<>();//create HashMap
+data.put(1, 1);
+data.put(2,4);
+data.put(3,9);
+data.put(4,16);
+data.put(5, 25);
+data.put(6, 36);
+data.put(7,49);
+data.put(8,56);
+data.put(9,81);
+data.put(10,100);
+data.put(11,121);
+data.put(12,144);
+data.put(13, 169);
+data.put(14, 196);
+data.put(15, 225);
+for(Integer n:data.values())//using for loop
+{
+		System.out.println(n);//print values
+}
+  }
+}
+
+**********************************************************************
+
+package Asg6;
+
+public class Thread_Example extends Thread {
+
+	public void run()
+	{  System.out.println("current TRD "+Thread.currentThread().getName());
+		float result=0;
+	    float avg=0;
+
+		for (float i=1;i<=50;i++)
+		{
+			result= result +i;
+			 avg=result/50;
+		}
+		System.out.println("The avg of 1 to 50 is = "+avg);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Thread_Example obj = new Thread_Example();
+		Thread t1 = new Thread(obj);
+		 System.out.println("current TRD "+Thread.currentThread().getName());
+		t1.start();
+
+		int [] arr = {10,15,20,25,30};
+		int square =1; 
+		for (int i=0;i<arr.length;i++)
+		{
+			square =arr[i]*arr[i];
+			System.out.println(arr[i]+" square is  "+square);
+		}
+	}
+}
